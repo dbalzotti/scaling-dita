@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "http://docs.oasis-open.org/dita/v1.1/OS/dtd/concept.dtd">
+<concept id="d2c_system_overview">
+	<title>System overview</title>
+	<shortdesc>System and software requirements for the DITA2Confluence tool.</shortdesc>
+	<prolog>
+		<author>Lisa J Dyer</author>
+		<copyright>
+			<copyryear year="2005-2009"/>
+			<copyrholder>Lombardi Software, Inc.</copyrholder>
+		</copyright>
+		<critdates>
+			<created date="March 1, 2007"/>
+			<revised modified="August 1, 2008" golive="September 2, 2008" status="changed"/>
+			<revised modified="February 15, 2009" golive="February 27, 2009"/>
+		</critdates>
+		<metadata>
+			<audience experiencelevel="general" type="user" job="planning"/>
+		</metadata>
+	</prolog>
+	<conbody>
+		<section>
+			<title>System requirements</title>
+			<p>The DITA2Confluence tool uses Java, Ant, and XML technologies to import DITA XML content to the wiki engine. </p>
+			<p>Currently, you can import DITA XML content to the following wiki engines:<ul>
+					<li>Confluence Enterprise wiki (you can download a free trial from <xref href="http://www.atlassian.com/software/confluence/" scope="external"/>). DITA2Confluence has been extensively tested on Confluence versions 2.5.x and 2.8.x. Later Confluence versions are very likely but not guaranteed to fully support DITA2Confluence functionality.</li>
+				</ul></p>
+			<p>It is probable that any operating system environment where the supported Java SDK is installed will fully support DITA2Confluence functionality. It has been successfully installed and used on Windows XP/2003/Vista, Mac OS X, and UNIX and Linux distributions.</p>
+		</section>
+		<section>
+			<title>Tool dependencies</title>
+			<p>To run DITA2Confluence, you must install the following software components:</p>
+			<p id="prereqs">
+				<table frame="all">
+					<title/>
+					<tgroup cols="2">
+						<colspec colname="component" colnum="1"/>
+						<colspec colname="download" colnum="2"/>
+						<thead>
+							<row>
+								<entry>Component name</entry>
+								<entry>Distribution</entry>
+							</row>
+						</thead>
+						<tbody>
+							<row>
+								<entry>Apache Ant 1.7 or later</entry>
+								<entry>
+									<xref href="http://ant.apache.org/bindownload.cgi" scope="external"/>
+								</entry>
+							</row>
+							<row>
+								<entry>Java SDK 1.6 or later</entry>
+								<entry>
+									<xref href="http://www.java.com/en/download/manual.jsp" scope="external"/>
+								</entry>
+							</row>
+						</tbody>
+					</tgroup>
+				</table>
+			</p>
+			<p>Additionally, if your DITA XML implementation uses <codeph>conref</codeph> (the DITA XML construct for reusing content in multiple targets), you need to install the following plugin on your wiki instance.</p>
+			<p id="prereqs_optional">
+				<table frame="all">
+					<title/>
+					<tgroup cols="2">
+						<colspec colname="component" colnum="1"/>
+						<colspec colname="download" colnum="2"/>
+						<thead>
+							<row>
+								<entry>Component name</entry>
+								<entry>Distribution</entry>
+							</row>
+						</thead>
+						<tbody>
+							<row>
+								<entry>Multi-Excerpt Plugin</entry>
+								<entry>Bundled with the DITA2Confluence distribution</entry>
+							</row>
+						</tbody>
+					</tgroup>
+				</table>
+			</p>
+			<p>Multi-Excerpt limitations:<ul>
+					<li>For <codeph>{multiexcerpt-include}</codeph> use: A single wiki page may reuse 10 unique reusable content chunks (excerpts). An error is displayed for each excerpt that exceeds the limit. </li>
+					<li>For <codeph>{multiexcerpt}</codeph> use: A single wiki page may contain an unlimited number of reusable content chunks.</li>
+				</ul><note>To remove the Multi-Excerpt plugin limitations, you can upgrade the plugin to an unlimited version from the Multi-Excerpt Plugin site at <xref href="http://confluence.atlassian.com/display/CONFEXT/Multi-Excerpt+Plugin." scope="external" format="html"/>.</note></p>
+		</section>
+	</conbody>
+</concept>

@@ -1,0 +1,3 @@
+<val>
+  <prop att="platform" val="test" action="exclude" />
+</val>

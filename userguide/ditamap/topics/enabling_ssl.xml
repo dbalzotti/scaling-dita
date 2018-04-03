@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "http://docs.oasis-open.org/dita/v1.1/OS/dtd/task.dtd">
+<task id="enabling_SSL_for_d2c">
+	<title>Using DITA2Confluence with a secured Confluence site</title>
+	<prolog>
+		<author>Lisa J Dyer</author>
+		<copyright>
+			<copyryear year="2005-2009"/>
+			<copyrholder>Lombardi Software, Inc.</copyrholder>
+		</copyright>
+		<critdates>
+			<created date="March 1, 2007"/>
+			<revised modified="August 1, 2008" golive="September 2, 2008" status="changed"/>
+		</critdates>
+		<metadata>
+			<audience experiencelevel="expert" type="user" job="administering"/>
+		</metadata>
+	</prolog>
+	<taskbody>
+		<context>
+			<p>If your wiki system implements Secure Socket Layer (SSL), you might need to import the required certificate information into your Java certification keystore.</p>
+		</context>
+		<steps>
+			<step>
+				<cmd>From a Web browser window, navigate to your running wiki instance .</cmd>
+				<stepresult>The required certificate is presented in a dialog box.</stepresult>
+			</step>
+			<step>
+				<cmd>View the certificate and then save it as a certificate file (<codeph>.crt</codeph>).</cmd>
+			</step>
+			<step>
+				<cmd>From the command line interface, run:</cmd>
+				<stepxmp>
+					<codeblock>c:\dita2wiki>keytool -import -file [certificate file] -alias [wiki base URL] -keystore "C:\Program Files\Java\jdk1.5.0_12\jre\lib\security\cacerts</codeblock>
+				</stepxmp>
+			</step>
+			<step>
+				<cmd>Follow the prompts:</cmd>
+				<tutorialinfo>
+					<codeblock>Enter keystore password: [your_admin_password] Trust this certificate? [no]: yes Certificate was added to keystore</codeblock>
+				</tutorialinfo>
+			</step>
+		</steps>
+	</taskbody>
+</task>

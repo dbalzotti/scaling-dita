@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "http://docs.oasis-open.org/dita/v1.1/OS/dtd/concept.dtd">
+<concept id="d2c_process_arch">
+	<title>Processing overview</title>
+	<shortdesc>Describes how DITA XML source is processed to wiki format.</shortdesc>
+	<prolog>
+		<author>Lisa J Dyer</author>
+		<copyright>
+			<copyryear year="2005-2008"/>
+			<copyrholder>Lombardi Software, Inc.</copyrholder>
+		</copyright>
+		<critdates>
+			<created date="March 1, 2007"/>
+			<revised modified="August 1, 2008" golive="September 2, 2008" status="changed"/>
+		</critdates>
+		<metadata>
+			<audience experiencelevel="general" type="user" job="using"/>
+		</metadata>
+	</prolog>
+	<conbody>
+		<p>The following diagrams illustrate how DITA XML source is processed by the DITA2Confluence tool. The output is then stored on the target wiki. </p>
+		<p>
+			<image href="../images/DITA2ConfluenceExecutionDiagramPage1.jpg"/>
+		</p>
+		<p>
+			<image href="../images/DITA2ConfluenceExecutionDiagramPage2.jpg"/>
+		</p>
+	</conbody>
+</concept>

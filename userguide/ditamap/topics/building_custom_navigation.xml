@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "http://docs.oasis-open.org/dita/v1.1/OS/dtd/concept.dtd">
+<concept id="custom_nav">
+	<title>Building navigation structures based on DITA map hierarchy</title>
+	<prolog>
+		<author>Lisa J Dyer</author>
+		<copyright>
+			<copyryear year="2005-2009"/>
+			<copyrholder>Lombardi Software, Inc.</copyrholder>
+		</copyright>
+		<critdates>
+			<created date="February 15, 2009" golive="February 27, 2009"/>
+		</critdates>
+		<metadata>
+			<audience experiencelevel="expert" type="user" job="customizing"/>
+			<prodinfo>
+				<prodname>DITA2Confluence</prodname>
+				<vrmlist>
+					<vrm version="1.2"/>
+				</vrmlist>
+			</prodinfo>
+		</metadata>
+	</prolog>
+	<conbody>
+		<p>A common complaint about wikis is that they don't provide efficient ways to organize content based on custom ordering. Pages are sorting in alphanumeric or natural order, which can create very confusing navigation, causing customer dissatisfaction and irate customer support calls. Good organization helps users discover and consume the information they need quickly and repeatedly.</p>
+		<p>For example, you might have an installation guide organized in a particular sequence:<ol>
+				<li>Overview</li>
+				<li>Pre-installation tasks</li>
+				<li>Installation tasks</li>
+				<li>Post-installation tasks</li>
+			</ol></p>
+		<p>But when published to the wiki:<ol>
+				<li>Installation tasks</li>
+				<li>Overview</li>
+				<li>Post-installation tasks</li>
+				<li>Pre-installation tasks</li>
+			</ol></p>
+		<p>DITA2Confluence provides an efficient way to create custom sorting dynamically based on DITA map hierarchy: <ol>
+				<li>In <codeph>confluence.config.xm</codeph>l, set:<codeblock>enablesortid=true</codeblock></li>
+				<li>In <codeph>confluence.content.xml</codeph>, specify an ID range for each content module using <codeph>sortidstart</codeph> and <codeph>sortidend</codeph>:<codeblock>&lt;module 
+  folder="dita2confluence" 
+  spacekey="dita2confluence" 
+  spacename="Using DITA2Confluence" 
+  parentpagetitle="Nifty tools" 
+  ditamap="ditamap/dita2confluence.ditamap"
+  sortidstart="0" 
+  sortidend="100"/></codeblock><p>When the module is published to the wiki, a <codeph>{set-sort-id=[n]}</codeph> macro is added to each topic, where [n] is a sequential number based on the DITA map hierarchy.</p><p>Note also the use of the optional <codeph>parentpagetitle</codeph> attribute. In the example, an existing wiki page titled "Nifty tools" is used to organize all content that is related to nifty tools. By specifying the page title, the page also gets a sort ID, enabling you to combine wiki pages with your DITA content in your customer navigation dynamically and efficiently.</p></li>
+				<li>Using wiki markup, implement a macro that reads the resulting set-sort-id markup and creates a navigation structure. A common implementation is an expandable tree view in a side panel. <p>A commercial solution is available with Theme Builder which includes a <codeph>set-sort-id</codeph> macro (contact <xref href="http://adaptavist.com/">Adaptavist, Inc</xref>.). To promote an open-source solution, please vote for <xref href="http://jira.atlassian.com/browse/CONF-14328"/>.</p></li>
+			</ol></p>
+	</conbody>
+</concept>

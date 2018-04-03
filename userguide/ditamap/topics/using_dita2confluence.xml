@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "http://docs.oasis-open.org/dita/v1.1/OS/dtd/task.dtd">
+<task id="publishing_d2c">
+	<title>Publishing DITA XML content to the wiki</title>
+	<prolog>
+		<author>Lisa J Dyer</author>
+		<copyright>
+			<copyryear year="2005-2009"/>
+			<copyrholder>Lombardi Software, Inc.</copyrholder>
+		</copyright>
+		<critdates>
+			<created date="March 1, 2007"/>
+			<revised modified="August 1, 2008" golive="September 2, 2008" status="changed"/>
+			<revised modified="February 15, 2009" golive="February 27  2009" status="changed"/>
+		</critdates>
+		<metadata>
+			<audience experiencelevel="general" type="user" job="using"/>
+			<prodinfo>
+				<prodname>DITA2Confluence</prodname>
+				<vrmlist>
+					<vrm version="1.2"/>
+				</vrmlist>
+			</prodinfo>
+		</metadata>
+	</prolog>
+	<taskbody>
+		<prereq>
+			<p>Before you run the DITA2Confluence tool, ensure that you have met the system requirements, and prepared your DITA XML and wiki environments appropriately.</p>
+			<p conref="d2c_system_overview.xml#d2c_system_overview/prereqs"/>
+			<p conref="d2c_system_overview.xml#d2c_system_overview/prereqs_optional"/>
+		</prereq>
+		<context>
+			<p>Run the DITA2Confluence tool from command line to publish your DITA XML content to the target wiki.</p>
+		</context>
+		<steps>
+			<step>
+				<cmd>Open the command-line interface and then navigate to the directory containing the <codeph>build.xml</codeph> file.</cmd>
+			</step>
+			<step>
+				<cmd>Run the <codeph>ant</codeph> command to publish the target DITA XML content. </cmd>
+				<stepxmp>
+					<p>Basic command (publishes all modules configured in <codeph>confluence.content.xml</codeph>: <codeblock>ant</codeblock></p>
+					<p>Advanced command example (publishes a single module with optional labels and a comment): <codeblock>ant -Dmodules=dita2confluence 
+-Dpassword=mypassword -Dcomment="My first comment!" -Dlabels="1.2,dita2confluence,myspeciallabel"</codeblock></p>
+				</stepxmp>
+				<tutorialinfo>
+					<table>
+						<tgroup cols="2">
+							<colspec colname="c1" colnum="1"/>
+							<colspec colname="c2" colnum="2"/>
+							<thead>
+								<row>
+									<entry>Parameter</entry>
+									<entry>Usage</entry>
+								</row>
+							</thead>
+							<tbody>
+								<row>
+									<entry>
+										<codeph>ant</codeph>
+									</entry>
+									<entry>
+										<p>Calls Ant to execute the dita2confluence target. An <ph conref="troubleshooting_d2c.xml#d2c_troubleshooting/no_ant"/> error 
+indicates that the tool cannot find the Ant executable. <codeph>ANT_HOME</codeph> must be specified in your system path. Optionally, 
+you can set it from command line for the current session only.</p>
+										<p>An <ph conref="troubleshooting_d2c.xml#d2c_troubleshooting/no_jdk"/> indicates that the tool cannot find a supported version of 
+the Java Runtime Environment (JRE). </p>
+									</entry>
+								</row>
+								<row>
+									<entry><codeph>-Dmodules</codeph></entry>
+									<entry>Optional parameter to publish a single content module instead of all content modules configured in the 
+<codeph>confluence.content.xml</codeph> file. You can also specify several modules as quoted comma-separated list: 
+<codeph>-Dmodules="module1, module2"</codeph> </entry>
+								</row>
+								<row>
+									<entry>
+										<codeph>-Dpassword</codeph>
+									</entry>
+									<entry>
+										<p>Optional parameter for specifying the password of the user who is accessing the Confluence system via the remote API. Overrides 
+the password value configured in the <codeph>confluence.config.xml</codeph> file. Note that the input is not masked or encrypted.</p>
+									</entry>
+								</row>
+								<row>
+									<entry>
+										<codeph>-Dcomment</codeph>
+									</entry>
+									<entry>
+										<p>Optional parameter for adding a comment to the topics in a content module. Note that you can also add a comment using the 
+<codeph>comment</codeph> attribute for your content module. A comment specified at command line overrides a comment specified in the 
+<codeph>confluence.content.xml</codeph> file. See <xref href="publish-with-comment_d2c.xml" type="concept" format="dita"/> for more 
+information.</p>
+									</entry>
+								</row>
+								<row>
+									<entry>
+										<codeph>-Dlabels</codeph>
+									</entry>
+									<entry>
+										<p>Optional parameter for adding one or more labels to the topics in a content module. You can also specify several labels as quoted 
+comma-separated list: <codeph>-Dlabels="label_1, label_2"</codeph> Labels can also be auto-generated from metadata in the DITA XML 
+source. See <xref href="publish-with-label_d2c.xml" type="concept" format="dita"/> for more information.</p>
+									</entry>
+								</row>
+								<row>
+									<entry>
+										<codeph>-Dgeneratetoc</codeph>
+									</entry>
+									<entry>
+										<p>Optional session-wide parameter to force or forrbid generation of TOC page for all modules being imported in current session. 
+Example: <codeph>-Dgeneratetoc=true|false</codeph> This parameter overrides 'generatetoc' setting specified in content file.</p>
+									</entry>
+								</row>
+								<row>
+									<entry>
+										<codeph>-Drebuild</codeph>
+									</entry>
+									<entry><i>For developers:</i> Optional Boolean parameter for compiling the Java classes to update the DITA2Confluence binary file 
+(<codeph>lib/dita2confluence.jar</codeph>). If the binary file is not found, the build script automatically runs with the 
+<codeph>-Drebuild</codeph> parameter enabled. If the source files are not found, and this parameter is set to true, the build fails. 
+<note>You need to use the <codeph>-Drebuild</codeph> parameter only when changes have been made to the DITA2Confluence source code. This 
+option performs the necessary compilation to produce the executable files.</note></entry>
+								</row>
+							</tbody>
+						</tgroup>
+					</table>
+				</tutorialinfo>
+			</step>
+		</steps>
+		<result>If no errors were encounted during the import operation, the tool reports a "Build successful" message in the command line output. Browse the target wiki 
+space to verify that the expected content was successfully imported. If you encounter problems during the import, see "Troubleshooting".</result>
+	</taskbody>
+</task>

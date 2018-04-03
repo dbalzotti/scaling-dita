@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "http://docs.oasis-open.org/dita/v1.1/OS/dtd/concept.dtd">
+<concept id="about_d2c">
+	<title>About the DITA2Confluence tool</title>
+	<shortdesc>This topic describes the primary use cases for the DITA2Confluence tool.</shortdesc>
+	<prolog>
+		<author>Lisa J Dyer</author>
+		<copyright>
+			<copyryear year="2005-2009"/>
+			<copyrholder>Lombardi Software, Inc.</copyrholder>
+		</copyright>
+		<critdates>
+			<created date="March 1, 2007"/>
+			<revised modified="August 1, 2008" golive="October 15, 2008" status="changed"/>
+			<revised modified="February 15, 2009" golive="February 27, 2009" status="changed"/>
+		</critdates>
+		<metadata>
+			<audience experiencelevel="general" type="user" job="evaluating"/>
+			<prodinfo>
+				<prodname>dita2wiki</prodname>
+				<vrmlist>
+					<vrm version="1.2"/>
+				</vrmlist>
+			</prodinfo>
+		</metadata>
+	</prolog>
+	<conbody>
+		<section>
+			<title>Intended use</title>
+			<p>The DITA2Confluence tool enables you to publish DITA XML content to the Confluence Enterprise wiki. It is designed for the following primary use cases: </p>
+			<ul>
+				<li>You want to maintain your content source in DITA format but you want to incubate the content with subject-matter experts and other contributors on a wiki before final publication to multiple outputs formats.</li>
+				<li>You want to maintain your content source in DITA format but you want to enable users to edit or annotate the content throughout its life cycle.</li>
+				<li>Your information assets are currently maintained in DITA format but you want to migrate the content permanently to a wiki. </li>
+			</ul>
+			<p>Analysis about reasons for storing content in the DITA format rather than a wiki are beyond the scope of this documentation. See "Online resources" for a listing of blogs and other information sources about the subject. In general, DITA XML provides a richer semantic markup where wiki markup is designed to be simpler, and as such DITA XML meets authoring and publishing requirements that wikis typically cannot.</p>
+			<note>You cannot currently use DITA2Confluence to export wiki content to DITA XML. To accomplish that, you might look at <xref href="http://greensopinion.blogspot.com/2008/11/mylyn-wikitext-targets-oasis-dita.html" scope="external" format="html">the Mylyn Project</xref> which is an Eclipse plugin for exporting wikitext to DITA XML.</note>
+			<note>The DITA2Confluence tool currently supports the Simple Object Access Protocol (SOAP) as its protocol for communicating with the wiki engine. Remote Procedure Calling (XML/RPC), which is not currently supported in DITA2Confluence, is an alternative protocol. For a concise comparison of the two protocols, see <xref href="http://weblog.masukomi.org/writings/xml-rpc_vs_soap.htm" scope="external">XML-RPC vs. SOAP</xref></note>
+		</section>
+		<section>
+			<title>Features</title>
+			<p>The DITA2Confluence tool includes the following features:<ul>
+					<li>Easy-to-use command-line facility that can be integrated with automated build systems.</li>
+					<li>Sample DITA XML source for evaluating DITA2Confluence (this documentation).</li>
+					<li>Support for the DITA conref construct (referenced content is editable in the wiki output; referencing instances are readonly).</li>
+					<li>Generate a hyper-linked table of contents on the wiki based on DITA map hierarchies.</li>
+					<li>Build custom navigation structures, such as expandable and searchable trees, based on DITA map hierarchies.</li>
+					<li> Auto-tagging of published wiki pages based on metadata in DITA XML and specified by user.</li>
+					<li>Auto-commenting of published wiki pages.</li>
+					<li>Dynamic wiki space creation based on space validation (if a specified space does not exist, it is created dynamically).</li>
+					<li>Dynamic wiki space creation based on conditional processing (ditaval) rules.</li>
+					<li>Bulk deletion of existing comments, labels, or an entire wiki space (designed for development and test scenarios).</li>
+					<li><i>For developers:</i> Test harness and build script for creating updated binary and source distributions when developing with DITA2Confluence.</li>
+					<li><i>For developers:</i> Javadoc describing the Java interfaces, methods, and properties used in the processing (see <xref href="d2c_arch_overview.xml" type="concept" format="dita"/>).</li>
+				</ul></p>
+		</section>
+		<section>
+			<title>History</title>
+			<p>The DITA2Confluence tool was originally developed by <xref href="http://www.lombardi.com/" scope="external">Lombardi Software. Inc.</xref> in 2005 and then extended to provide its current feature set. It became generally available as a distribution of the open-source DITA2wiki Project in September, 2008.</p>
+		</section>
+	</conbody>
+</concept>

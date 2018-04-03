@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "http://docs.oasis-open.org/dita/v1.1/OS/dtd/concept.dtd">
+<concept id="publish_with_comments">
+	<title>Publishing with comments</title>
+	<prolog>
+		<author>Lisa J Dyer</author>
+		<copyright>
+			<copyryear year="2005-2009"/>
+			<copyrholder>Lombardi Software, Inc.</copyrholder>
+		</copyright>
+		<critdates>
+			<created date="October 10, 2008"/>
+			<revised modified="October 13, 2008" golive="October 14, 2008" status="changed"/>
+			<revised modified="Febuary 15, 2009" golive="February 27, 2009" status="changed"/>
+		</critdates>
+		<metadata>
+			<audience experiencelevel="general" type="user" job="using"/>
+			<prodinfo>
+				<prodname>DITA2Confluence</prodname>
+				<vrmlist>
+					<vrm version="1.2"/>
+				</vrmlist>
+			</prodinfo>
+		</metadata>
+	</prolog>
+	<conbody>
+		<p>Comments are commonly used to annotate and promote content in Web 2.0 applications. In the Confluence Enterprise wiki and many other wikis, comments are preserved 
+separately from the associated wiki page, which means that when you publish an update to a wiki page, comments are not affected. </p>
+		<p>In some scenarios, you might want to add a comment to pages at publishing time. </p>
+		<ol>
+			<li>In a <codeph>module</codeph> element in the <codeph>confluence.content.xml</codeph> file, add a <codeph>comment</codeph> attribute with the comment inside 
+quotation marks. Comments may contain URLs and special characters. </li>
+			<li>
+				<p>To delete existing comments from wiki pages, add a <codeph>wipecomments</codeph> attribute and set it to <codeph>true</codeph>. When used in conjunction 
+with the <codeph>comment</codeph> attribute, first all existing comments are deleted, and then the specified comment is added. </p>
+				<p>The <codeph>wipecomments</codeph> feature is particularly useful in development and testing scenarios. But be careful when using in production because 
+comments might be deleted forever.</p>
+			</li>
+			<li>Alternately, you can add a comment from command line.A comment specified this way overrides a comment specified in the <codeph>confluence.content.xml</codeph> 
+file: <codeblock>ant -Dcomment="This is my overriding comment, added at publishing time."</codeblock></li>
+		</ol>
+		<note>The commenting feature is applied in an "all or nothing" way. You cannot specify a comment for individual topics in your content module.</note>
+		<example>
+			<title>Example of comment specified in module settings:</title>
+			<codeblock>
+			&lt;contentroot path="C:\\dita2confluence\\doc">
+		  	&lt;module folder="userguide" 
+          		spacekey="dita2confluence" 
+          		spacename="Using DITA2Confluence"
+  			ditamap="ditamap/using_dita2confluence.ditamap" 
+          		comment="This is an example comment. A comment can contain special characters." 
+          		wipecomments="false"/>
+			&lt;/contentroot>
+			</codeblock>
+		</example>
+	</conbody>
+</concept>

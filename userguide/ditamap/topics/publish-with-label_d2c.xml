@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "http://docs.oasis-open.org/dita/v1.1/OS/dtd/concept.dtd">
+<concept id="publish_with_labels">
+	<title>Publishing with labels (tagging)</title>
+	<prolog>
+		<author>Lisa J Dyer</author>
+		<copyright>
+			<copyryear year="2005-2009"/>
+			<copyrholder>Lombardi Software, Inc.</copyrholder>
+		</copyright>
+		<critdates>
+			<created date="October 10, 2008"/>
+			<revised modified="October 13, 2008" golive="October 14, 2008" status="changed"/>
+			<revised modified="Febuary 15, 2009" golive="February 27, 2009" status="changed"/>
+		</critdates>
+		<metadata>
+			<audience experiencelevel="general" type="user" job="using"/>
+			<prodinfo>
+				<prodname>DITA2Confluence</prodname>
+				<vrmlist>
+					<vrm version="1.2"/>
+				</vrmlist>
+			</prodinfo>
+		</metadata>
+	</prolog>
+	<conbody>
+		<p>Labels are a powerful way to organize and promote content in Web 2.0 applications. On a wiki, labels can be used to generate personalized filters of the content or to provide alternative navigational structures based on taxonomies (predefined tagging) and folksonomies (popular tagging). Labels can also be used to show different versions of a page.</p>
+		<ol>
+			<li>
+				<p><b>Autolabeling:</b> When the <codeph>processcontentlabels</codeph> attribute for a content module is set to <codeph>true</codeph>, label(s) are generated based on metadata in the DITA topics. A limited set of metadata is currently supported. View the DITA XML source of this topic for example metadata.</p>
+			</li>
+			<li>
+				<p><b>Alternate labeling:</b> Use the <codeph>labels</codeph> attribute for a content module to add one or more labels to the published topics. Specify multiple labels in a comma-separated list. You can use <codeph>processcontentlabels</codeph> in conjunction with <codeph>labels</codeph> to create a flexible mix of labels.</p>
+			</li>
+			<li>
+				<p><b>Ad-hoc labeling:</b> You can also add labels from command line at publishing time. Labels generated this way are additive: that is, they do not override labels that are specified in the <codeph>confluence.content.xml</codeph> file for your content modules. You might use this feature to enable publishers who don't have permissions to change the pre-configured labels to add their own labels.</p>
+			</li>
+		</ol>
+		<table>
+			<tgroup cols="2">
+				<thead>
+					<row>
+						<entry>Rules</entry>
+						<entry>More information</entry>
+					</row>
+				</thead>
+				<tbody>
+					<row>
+						<entry>Unsupported special characters are replaced with underscore characters.</entry>
+						<entry>Special characters that are not supported by the Confluence engine include <codeph>_,-, \,/,@,#,+, &amp;, &#42;</codeph></entry>
+					</row>
+					<row>
+						<entry>Autolabeling uses the values of the <codeph>prodname</codeph> element and the <codeph>version</codeph> attribute of the <codeph>vrm</codeph> element to construct labels. </entry>
+						<entry>If you have a use case for using other elements in the DITA prolog to construct autolabels, please open an enhancement request at <xref href="http://sourceforge.net/tracker2/?group_id=238956" scope="external" format="html"/></entry>
+					</row>
+				</tbody>
+			</tgroup>
+		</table>
+	</conbody>
+</concept>

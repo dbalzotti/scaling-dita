@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "http://docs.oasis-open.org/dita/v1.1/OS/dtd/concept.dtd">
+<concept id="preparing_for_d2c">
+	<title>Configuring the publishing options</title>
+	<prolog>
+		<author>Lisa J Dyer</author>
+		<copyright>
+			<copyryear year="2005-2009"/>
+			<copyrholder>Lombardi Software, Inc.</copyrholder>
+		</copyright>
+		<critdates>
+			<created date="March 1, 2007"/>
+			<revised modified="August 1, 2008" golive="September 2, 2008" status="changed"/>
+			<revised modified="February 15, 2009" golive="February 27, 2009" status="changed"/>
+		</critdates>
+		<metadata>
+			<audience experiencelevel="general" type="user" job="planning"/>
+		</metadata>
+	</prolog>
+	<conbody>
+		<p>The DITA2Confluence tool provides configuration options for how DITA XML content is published to the wiki. Most of these options are configured in the 
+<codeph>confluence.content.xml</codeph> file. Each DITA map equals one content module. For each content module, you create an entry in the 
+<codeph>confluence.content.xml</codeph> file with required and optional attributes. </p>
+		<p>Some options are intended for use in testing environments only, to aid development and debugging. </p>
+		<p>The <codeph>confluence.config.xml</codeph> file governs the wiki environment settings at the system level. Usually, setting up the environment is a one-time 
+configuration task.</p>
+		<section>
+			<title>Configuring where and how to publish</title>
+			<p>The following options are configured in the <codeph>confluence.config.xml</codeph> file, which resides under the root directory of your DITA2Confluence 
+installation.</p>
+			<table>
+				<tgroup cols="3">
+					<colspec colname="c1" colnum="1"/>
+					<colspec colname="c2" colnum="2"/>
+					<colspec colname="c3" colnum="3"/>
+					<thead>
+						<row>
+							<entry>Element</entry>
+							<entry>Attribute</entry>
+							<entry>Usage</entry>
+						</row>
+					</thead>
+					<tbody>
+						<row>
+							<entry>config</entry>
+							<entry/>
+							<entry>Parent element with the following attributes for describing the wiki environment.</entry>
+						</row>
+						<row>
+							<entry/>
+							<entry>bindingaddress</entry>
+							<entry>Specify the IP address for the wiki instance to which you are publishing. In most cases, this is the same value as the URL.</entry>
+						</row>
+						<row>
+							<entry/>
+							<entry>url</entry>
+							<entry>Specify the full Web address to the wiki instance to which you are publishing.</entry>
+						</row>
+						<row>
+							<entry/>
+							<entry>username</entry>
+							<entry>Specify a user who has site-level administrative permissions to access the target wiki instance.</entry>
+						</row>
+						<row>
+							<entry/>
+							<entry>password</entry>
+							<entry>Specify the password for the user. You can also supply the password from the command-line console.</entry>
+						</row>
+						<row>
+							<entry/>
+							<entry>ditaxslfilename</entry>
+							<entry>Default XSL transformation config file. Optionally specify a custom XSL file.</entry>
+						</row>
+						<row>
+							<entry/>
+							<entry>dtddir</entry>
+							<entry>Folder path or URL to DTD specifications. This can be the absolute path, public URI or path relative to routine installation folder. By 
+default, the convenience copies of the DITA Open Toolkit DTDs are used. Optionally specify a path to your copy of the DTDs or the public URI. 
+Note that when referencing the public URI, you must be connected online, and the processing times are significantly longer.</entry>
+						</row>
+						<row>
+							<entry/>
+							<entry>toxslfilename</entry>
+							<entry>XSL transformation rules for the Table of Contents page which is created on the wiki when the <codeph>generatetoc</codeph> attribute for a 
+content module is set to <codeph>true</codeph>. Optionally specify a custom XSL file.</entry>
+						</row>
+						<row>
+							<entry/>
+							<entry>enablesortid</entry>
+							<entry>
+								<p>Optional Boolean attribute for programmatically assigning sort IDs to the published topics based on the hierarchy in the DITA map(s). Sort 
+IDs in conjunction with custom macros enable you to implement navigational constructs such as dynamic tree views. </p>
+								<p>When using <codeph>enablesortid</codeph>, you need to also set the ID range for each of your content modules using the 
+<codeph>sortidstart</codeph> and <codeph>sortidend</codeph> attributes in the <codeph>confluence.content.xml</codeph> file. </p>
+							</entry>
+						</row>
+					</tbody>
+				</tgroup>
+			</table>
+		</section>
+		<section>
+			<title>Configuring what to publish</title>
+			<p>The following options are configured in the <codeph>confluence.content.xml</codeph> file, which resides under the root directory of your DITA2Confluence 
+installation. All elements and attributes are required unless specified as optional.</p>
+			<table>
+				<tgroup cols="3">
+					<colspec colname="c1" colnum="1"/>
+					<colspec colname="c2" colnum="2"/>
+					<colspec colname="c3" colnum="3"/>
+					<thead>
+						<row>
+							<entry>Element</entry>
+							<entry>Attribute</entry>
+							<entry>Usage</entry>
+						</row>
+					</thead>
+					<tbody>
+						<row>
+							<entry>contentroot</entry>
+							<entry/>
+							<entry>Parent element that contains one or more <codeph>module</codeph> elements. A <codeph>contentroot</codeph> element uniquely identifies the 
+location of the DITA XML source. For each source path, create one <codeph>contentroot</codeph> element with an unlimited number of 
+<codeph>module</codeph> elements.</entry>
+						</row>
+						<row>
+							<entry/>
+							<entry>path</entry>
+							<entry>Absolute path to the root directory of the DITA XML source for one or more content modules.</entry>
+						</row>
+						<row>
+							<entry>module</entry>
+							<entry/>
+							<entry>Element for declaring a content module (a module equals a DITA map).</entry>
+						</row>
+						<row>
+							<entry/>
+							<entry>folder</entry>
+							<entry>Name of the folder in which the DITA map folder resides.</entry>
+						</row>
+						<row>
+							<entry/>
+							<entry>spacekey</entry>
+							<entry>Identifier of the space to which you are publishing your content module(s). The spacekey value can be dynamically generated based on 
+ditaval rules, but most often you'll want to specify it explicitly. The spacekey syntax is governed by the wiki engine, which throws exceptions 
+for illegal characters.</entry>
+						</row>
+						<row>
+							<entry/>
+							<entry>ditamap</entry>
+							<entry>Name of the target DITA map, excluding the file extension. The constructor expects a DITA map to reside in a <codeph>ditamap</codeph> 
+folder. </entry>
+						</row>
+						<row>
+							<entry/>
+							<entry>comment</entry>
+							<entry>Optional attribute for adding a comment to new and updated topics. By default this value is empty (no comment is added). A comment must be 
+inside quotation marks. You can also specify a comment from command line.</entry>
+						</row>
+						<row>
+							<entry/>
+							<entry>ditaval</entry>
+							<entry>Optional name of the <codeph>*.ditava</codeph>l file, which sets rules for excluding or including content based on DITA XML markup. If a 
+<codeph>ditaval</codeph> file exists for a content module, you can choose to omit the spacekey value in the 
+<codeph>confluence.content.xm</codeph>l file. This causes the build process to create the space dynamically based on the ditaval file name. This 
+is useful when publishing complex information products dynamically based on metadata structures (e.g. one information set for "novice" and 
+another for "expert"). In most cases, though, you'll want to specify the target spacekey explicitly.</entry>
+						</row>
+						<row>
+							<entry/>
+							<entry>generatetoc</entry>
+							<entry>Optional Boolean attribute (true or false) for generating a Table of Contents page on the wiki based on the DITA map hierarchy. Designed 
+for development and debugging scenarios. </entry>
+						</row>
+						<row>
+							<entry/>
+							<entry>labels</entry>
+							<entry>Optional attribute for adding one or more labels to the topics in a content module. </entry>
+						</row>
+						<row>
+							<entry/>
+							<entry>parentpagetitle</entry>
+							<entry>Optional attribute for specifying a parent page for the topics in a content module. A parent page can be an original wiki page, or it can 
+be a topic in a DITA map. Designed for creating "landing page" structures that aid content discovery and navigation. </entry>
+						</row>
+						<row>
+							<entry/>
+							<entry>processcontentlabels</entry>
+							<entry>Optional attribute for adding one or more labels (tags) to new and updated topics based on metadata in the DITA XML source. Specifically, 
+the <codeph>&lt;prodname></codeph> and <codeph>&lt;vrm></codeph> values in the <codeph>&lt;metadata></codeph> element are used to construct the 
+label. Disabled (false) by default. You can also specify one or more labels from command line using the <codeph>labels</codeph> attribute. 
+</entry>
+						</row>
+						<row>
+							<entry/>
+							<entry>sortidend</entry>
+							<entry>Required when <codeph>enablesortid=true</codeph> in the <codeph>confluence.config.xml</codeph> file. The <codeph>sortidstart</codeph> and 
+<codeph>sortidend</codeph> attributes specify the numeric range within which sort IDs are generated for a content module (for example, 
+<codeph>sortidstart=0, sortidend=250</codeph>). Each range can be different, just ensure that the ranges do not overlap. The total maximum range 
+for all content modules on a wiki is <codeph>9999</codeph>.</entry>
+						</row>
+						<row>
+							<entry/>
+							<entry>sortidstart</entry>
+							<entry>Required when <codeph>enablesortid=true</codeph> in the <codeph>confluence.config.xml</codeph> file. The <codeph>sortidstart</codeph> and 
+<codeph>sortidend</codeph> attributes specify the numeric range within which sort IDs are generated for a content module (for example, 
+<codeph>sortidstart=0, sortidend=250</codeph>). The total maximum range for all content modules on a wiki is <codeph>9999</codeph>.</entry>
+						</row>
+						<row>
+							<entry/>
+							<entry>spacehomepage</entry>
+							<entry>Optional attribute for specifying an existing home page for the target space. If this is not specified, and the 
+<codeph>generatetoc</codeph> attribute is set to <codeph>true</codeph>, a Table of Contents page is created as the home page, replacing any 
+existing home page. Therefore, be careful when using <codeph>generatetoc</codeph>. If generatetoc is set to false, topics are published to the 
+space root by default. To publish topics as children of existing wiki pages, use the <codeph>parentpagetitle</codeph> attribute.</entry>
+						</row>
+						<row>
+							<entry/>
+							<entry>spacename</entry>
+							<entry>Attribute for specifying the name of the space (not space key). If not specified, and the space is dynamically created, an error message 
+will prompt you for a name value.</entry>
+						</row>
+						<row>
+							<entry/>
+							<entry>wipecomments</entry>
+							<entry>Optional attribute for deleting all comments from existing wiki pages in the DITA map scope. Disabled (false) by default. If you set this 
+option to true, and then specify a value for the comment option (or specify it from command line), first all comments are deleted and then the 
+new comment is added.</entry>
+						</row>
+						<row>
+							<entry/>
+							<entry>wipelabels</entry>
+							<entry>Optional attribute for deleting all labels from existing wiki pages in the DITA map scope. Disabled (false) by default. If you set this 
+option to true, and then specify a value for one or more labels from command line, first all labels are deleted and then the new label(s) are 
+added.</entry>
+						</row>
+						<row>
+							<entry/>
+							<entry>wipespace</entry>
+							<entry>Optional attribute for deleting the target space. Disabled (false) by default. Designed for use in development environments, especially 
+for dynamic publishing scenarios where spaces can proliferate in large numbers and become cumbersome to clean up. However, use this feature with 
+extreme caution in production environments. You cannot restore a space after it is deleted unless you revert to a database backup, and normally 
+some data loss occurs in doing so. </entry>
+						</row>
+					</tbody>
+				</tgroup>
+			</table>
+		</section>
+	</conbody>
+</concept>

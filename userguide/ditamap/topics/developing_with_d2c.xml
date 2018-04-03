@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "http://docs.oasis-open.org/dita/v1.1/OS/dtd/concept.dtd">
+<concept id="developing_with_d2c">
+	<title>Developing with the DITA2Confluence tool</title>
+	<prolog>
+		<author>Lisa J Dyer</author>
+		<copyright>
+			<copyryear year="2005-2009"/>
+			<copyrholder>Lombardi Software, Inc.</copyrholder>
+		</copyright>
+		<critdates>
+			<created date="March 1, 2007"/>
+			<revised modified="August 1, 2008" golive="September 2, 2008" status="changed"/>
+			<revised modified="February 15, 2009" golive="February 27, 2009" status="changed"/>
+		</critdates>
+		<metadata>
+			<audience experiencelevel="expert" type="user" job="customizing"/>
+		</metadata>
+	</prolog>
+	<conbody>
+		<p>If you are developing with the DITA2Confluence tool, follow these steps to run the test suite, build new distributions of the tool, and share your contributions 
+with the DITA2Wiki project community.</p>
+		<section id="testing">
+			<title>Running the test suite</title>
+			<ol>
+				<li>
+					<p>Configure the <filepath>/test/files/test.properties</filepath> file to reflect your environment. By default, the test suite uses the DITA XML source 
+for the DITA2Confluence user guide (this content).</p>
+				</li>
+				<li>
+					<p>From the command-line interface, run the following command:</p>
+					<codeblock>ant test</codeblock>
+					<p>The JUnit test cases are executed, and the results are represented as html page available in <codeph>test-reports/index.html</codeph>. Deep stack 
+traces and by-class raw test outputs are available in <codeph>tmp/rawtestoutput</codeph> folder. If you encounter problems during execution, see <xref 
+href="troubleshooting_d2c.xml" type="topic" format="dita">Troubleshooting</xref>.</p>
+				</li>
+			</ol>
+		</section>
+		<section>
+			<title>Publishing with the rebuild option</title>
+			<p>After you make changes to the DITA2Confluence source code, you can test your changes by publishing your content module(s) with the rebuild parameter 
+enabled:<codeblock>ant -Drebuild=true</codeblock></p>
+		</section>
+		<section id="deploying">
+			<title>Building the distribution packages</title>
+			<p>From command line, run the following command:</p>
+			<codeblock>ant distribute</codeblock>
+			<p>The script creates a<codeph>/distrib</codeph> directory with the following content:<ul>
+					<li><codeph>dita2confluence1.2.source.zip</codeph> - source-only distribution package, which can post, test, and distribute the packages. You only 
+need this distribution if you are developing with DITA2Confluence.</li>
+					<li><codeph>dita2confluence1.2.binary.zip</codeph> - package containing all of the executables needed to run the DITA2Confluence tool.</li>
+					<li><codeph>dita2confluence1.2.javadoc.zip</codeph> - package containing the generated Javadoc for the DITA2Confluence core classes. This ZIP file 
+is also extracted to a <codeph> /javadoc</codeph> folder for immediate browsing. </li>
+				</ul></p>
+				<note>If You are releasing major version changes You may want to set a specific code version. This can be done by updating <codeph>version</codeph> property 
+in <codeph>build.xml</codeph> file.</note>
+		</section>
+		<section id="contributing">
+			<title>Contributing to the DITA2wiki project</title>
+			<ol>
+				<li>Test your code changes.</li>
+				<li>
+					<p>Build the distribution packages. </p>
+				</li>
+				<li>
+					<p>Log on to the Sourceforge.net Web site and then browse to the code repository for the DITA2Wiki project: <xref 
+href="http://dita2wiki.cvs.sourceforge.net/dita2wiki/" scope="external">http://dita2wiki.cvs.sourceforge.net/dita2wiki/</xref></p>
+				</li>
+				<li>Upload your code changes to the repository. Be sure to describe your code changes for other users. </li>
+				<li>Update the DITA2Wiki project wiki to document your contributions: <xref href="http://dita2wiki.wiki.sourceforge.net/" 
+scope="external">http://dita2wiki.wiki.sourceforge.net/</xref></li>
+			</ol>
+		</section>
+	</conbody>
+</concept>

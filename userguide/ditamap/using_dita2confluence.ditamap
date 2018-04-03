@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA Map//EN" "map.dtd">
+<map title="Using the DITA2Confluence tool" id="dita2wiki_ug">
+	<topicref href="topics/intro_to_dita2confluence.xml" navtitle="About the DITA2Confluence tool" scope="local"/>
+	<topicref href="topics/d2c_system_overview.xml" navtitle="System requirements and distribution architecture" scope="local"/>
+	<topicref href="topics/preparing_your_system_for_d2c.xml" navtitle="Set up prerequisites and configure your system for the import" scope="local"/>
+	<topicref href="topics/configuration_options.xml" format="dita" scope="local"/>
+	<topicref href="topics/using_dita2confluence.xml" scope="local">
+		<topicref href="topics/publish-with-label_d2c.xml" format="dita" scope="local"/>
+		<topicref href="topics/publish-with-comment_d2c.xml" type="concept" format="dita" scope="local"/>
+	</topicref>
+	<topicref href="topics/enabling_ssl.xml" navtitle="Importing DITA XML source to a SSL-enabled wiki" scope="local" format="dita"/>
+	<topicref href="topics/developing_with_d2c.xml" navtitle="Developing with the DITA2Confluence tool" scope="local"/>
+	<topicref href="topics/d2c_arch_overview.xml" navtitle="Processing overview" scope="local"/>
+	<topicref href="topics/distribution_overview_d2c.xml" navtitle="DITA2Confluence distribution overview" scope="local"/>
+	<topicref href="topics/troubleshooting_d2c.xml" navtitle="Troubleshooting" scope="local"/>
+</map>

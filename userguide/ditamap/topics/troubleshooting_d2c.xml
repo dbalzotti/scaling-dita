@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "http://docs.oasis-open.org/dita/v1.1/OS/dtd/concept.dtd">
+<concept id="d2c_troubleshooting">
+	<title>Troubleshooting</title>
+	<prolog>
+		<author>Lisa J Dyer</author>
+		<copyright>
+			<copyryear year="2005-2009"/>
+			<copyrholder>Lombardi Software, Inc.</copyrholder>
+		</copyright>
+		<critdates>
+			<created date="March 1, 2007"/>
+			<revised modified="August 1, 2008" golive="September 2, 2008" status="changed"/>
+			<revised modified="February 15, 2009" golive="February 27, 2009" status="changed"/>
+		</critdates>
+		<metadata>
+			<audience experiencelevel="general" type="user" job="troubleshooting"/>
+		</metadata>
+	</prolog>
+	<conbody>
+		<p>This topic describes common errors that can occur during the import procedure and provides instructions for resolving them.</p>
+		<table frame="none">
+			<title>Troubleshooting a failed import operation</title>
+			<tgroup cols="2">
+				<colspec colname="c1" colnum="1"/>
+				<colspec colname="c2" colnum="2"/>
+				<thead>
+					<row>
+						<entry>Error description</entry>
+						<entry>How to resolve</entry>
+					</row>
+				</thead>
+				<tbody>
+					<row>
+						<entry><ph id="no_ant">
+						<codeblock>Class org.apache.tools.ant.taskdefs.condition.And doesn't support
+						the nested "matches" element.</codeblock>
+						</ph></entry>
+						<entry>Set the <codeph>ANT_HOME</codeph> variable in your system path to point to the ANT executable.</entry>
+					</row>
+					<row>
+						<entry><ph id="no_jdk">
+						<codeblock>java.lang.UnsupportedClassVersionError: 
+						com/lombardisoftware/confluence/dita2confluence/AntTask</codeblock>
+						</ph></entry>
+						<entry>Set the <codeph>JAVA_HOME</codeph> variable in your system path to point to the JDK executable. Alternately, you can set it at command line for the current session only.</entry>
+					</row>
+					<row>
+						<entry><ph id="wrong_password"><codeph>atlassian.confluence.rpc.AuthenticationFailedException</codeph></ph></entry>
+						<entry>An incorrect user name or password is specified in the login properties file, or the specified user does not have sufficient privileges to use the remote API for importing. Note also that the user should be assigned to the <codeph>confluence-administrators</codeph> group, which is part of the Confluence internal security provider..</entry>
+					</row>
+					<row>
+						<entry>Page not found</entry>
+						<entry>This error can be caused by, for example, syntactical problems in the source (DITA) markup or the target (wiki) markup. To resolve, identify and fix the invalid or corrupted markup and re-import the ditamap, or delete the corrupted wiki page(s) and then re-import the ditamap.</entry>
+					</row>
+					<row>
+						<entry>Address not found</entry>
+						<entry>Ensure that the <codeph>confluence.login.properties</codeph> file references that correct URL to your Confluence instance. Also ensure that the instance is in running mode.</entry>
+					</row>
+					<row>
+						<entry>Time out</entry>
+						<entry>Timeout can occur when using a URL to resolve DTD references in larger DITA ditamap scopes. You can use a local copy of the DTDs to improve performance and avoid connection timeouts. </entry>
+					</row>
+					<row>
+						<entry>Invalid space key</entry>
+						<entry>The value you have specified for the <codeph>spacekey</codeph> property in the guide property file contains special characters that are not supported by the Confluence engine. Examples of invalid special characters include <codeph>_,-, \,/,@,#,+, *, &amp;</codeph></entry>
+					</row>
+				</tbody>
+			</tgroup>
+		</table>
+	</conbody>
+</concept>

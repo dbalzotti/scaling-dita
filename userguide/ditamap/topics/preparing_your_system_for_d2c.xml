@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "http://docs.oasis-open.org/dita/v1.1/OS/dtd/concept.dtd">
+<concept id="preparing_for_d2c">
+	<title>Preparing your system for DITA2Confluence</title>
+	<prolog>
+		<author>Lisa J Dyer</author>
+		<copyright>
+			<copyryear year="2005-2009"/>
+			<copyrholder>Lombardi Software, Inc.</copyrholder>
+		</copyright>
+		<critdates>
+			<created date="March 1, 2007"/>
+			<revised modified="August 1, 2008" golive="September 2, 2008" status="changed"/>
+			<revised modified="February 15, 2009" golive="February 27, 2009" status="changed"/>
+		</critdates>
+		<metadata>
+			<audience experiencelevel="general" type="user" job="planning"/>
+		</metadata>
+	</prolog>
+	<conbody>
+		<p>Before you can use the DITA2Confluence tool to publish your DITA XML source to the wiki, you need to meet the system requirements, and prepare your source and target environments for the publishing operation.</p>
+		<section id="dita_setup">
+			<title>DITA XML setup</title>
+			<ul>
+				<li>
+					<p>The DITA2Confluence tool expects a DITA map file in a folder named <codeph>ditamap</codeph>. Because processing is done based on the ditamap, your topics and images can reside anywhere in relation to the ditamap folder.</p>
+					<p>
+						<note>If your content management system enforces a particular organization, a workaround is to manually or programmatically copy the DITA XML source from your content management folder structure to a temporary folder structure for the duration of the processing.</note>
+					</p>
+				</li>
+			</ul>
+		</section>
+		<section id="wiki_setup">
+			<title>Confluence setup</title>
+			<ul>
+				<li>
+					<p>If your DITA XML assets implement <codeph>conref</codeph> (a DITA construct for content reuse), you need to install the <b>Multi-Excerpt plugin</b> in your wiki environment. A convenience copy of the plugin is bundled with the DITA2Confluence distribution but it's a good idea to download the latest version from <xref href="http://www.artemissoftware.biz/site/display/art/Multi-Excerpt+Plugin+for+Confluence" format="html"/></p>
+					<p>Note that the free license of the Multi-Excerpt plugin limits the number of excerpts to 10 on a single page. To remove the limitation, you can upgrade to the commercial license at a very affordable cost.</p>
+				</li>
+				<li>
+					<p>If you use CALS tables (implemented by the DITA &lt;table> element), you need to install the <b>Content Formatting Macros</b> on your wiki instance. This free plugin can be installed from the Plugin Repository page in Confluence (requires admin access).</p>
+					<note>You must disable the Confluence Compatibility Macros as they cause formatting conflicts.</note>
+				</li>
+			</ul>
+		</section>
+		<section>
+			<title>DITA2Confluence setup</title>
+			<ol>
+				<li>Configure the <codeph>[dita2confluence_home]\confluence.config.xml</codeph> file for your target wiki instance. </li>
+				<li>Configure the <codeph>[dita2confluence_home]\confluence.content.xml</codeph> file with the publishing rules for your content module(s). </li>
+			</ol>
+			<p>See <xref href="configuration_options.xml" type="concept" format="dita"/> for more information.</p>
+		</section>
+	</conbody>
+</concept>
