@@ -29,6 +29,7 @@
 			<title>Intended use</title>
 			<p>The DITA2Confluence tool enables you to publish DITA XML content to the Confluence Enterprise wiki. It is designed for the following primary use cases: </p>
 			<ul>
+				<li>This is an added list item for testing purposes only.</li>
 				<li>You want to maintain your content source in DITA format but you want to incubate the content with subject-matter experts and other contributors on a wiki before final publication to multiple outputs formats.</li>
 				<li>You want to maintain your content source in DITA format but you want to enable users to edit or annotate the content throughout its life cycle.</li>
 				<li>Your information assets are currently maintained in DITA format but you want to migrate the content permanently to a wiki. </li>
